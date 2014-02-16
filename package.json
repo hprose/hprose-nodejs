@@ -1,0 +1,33 @@
+{
+  "name": "hprose",
+  "version": "1.4.3",
+  "homepage": "https://github.com/hprose/hprose-nodejs",
+  "description": "hprose for node.js",
+  "author": {
+    "name" : "Ma Bingyao",
+    "email" : "mabingyao@gmail.com",
+    "url": "http://hprose.com/"
+  },
+  "directories": {
+    "lib": "lib/"
+  },
+  "main": "lib/hprose.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hprose/hprose-nodejs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hprose/hprose-nodejs/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/hprose/hprose-nodejs/blob/master/LICENSE.md"
+    }
+  ]
+}
