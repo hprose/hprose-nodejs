@@ -49,4 +49,10 @@ console.log(hprose.unserialize(s));
 
 // Test HarmonyMaps
 var map = new Map();
-console.log(map);
+map.set(map, map);
+map.set(0, "+0");
+map.set(-0, "-0");
+console.log(map.size);
+s = hprose.serialize(map);
+console.log(s.toString());
+console.log(hprose.unserialize(s, false, true).size);
