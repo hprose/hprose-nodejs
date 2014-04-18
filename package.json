@@ -1,6 +1,6 @@
 {
   "name": "hprose",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "homepage": "https://github.com/hprose/hprose-nodejs",
   "description": "hprose for node.js",
   "author": {
