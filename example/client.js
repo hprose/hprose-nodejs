@@ -19,17 +19,19 @@ var callback = function(result) {
         console.log(end - start);
     }
 };
+client.beginBatch();
 for (var i = 0; i < max; i++) {
     proxy.hello(i, callback);
 }
 var end = new Date().getTime();
 console.log(end - start);
+proxy.getMaps('name', 'age', 'age', function(result) {
+    console.log(result);
+});
+client.endBatch();
 proxy.getMaps('name', 'age', 'birthday', function(result) {
     console.log(result.toString());
     console.log(hprose.unserialize(result));
     console.log(hprose.serialize(hprose.unserialize(result)).toString());
 }, hprose.Serialized);
 
-proxy.getMaps('name', 'age', 'age', function(result) {
-    console.log(result);
-});
