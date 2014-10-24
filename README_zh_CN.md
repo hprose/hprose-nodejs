@@ -8,7 +8,7 @@
         - [异步函数或方法](#异步函数或方法)
     - **[Http 客户端](#http-客户端)**
         - [异常处理](#异常处理)
-
+    - **[Tcp 服务器与客户端](#tcp-服务器与客户端)**
 >---
 
 ## 简介
@@ -132,3 +132,18 @@ proxy.hello("world", function(result) {
 });
 ```
 
+### Tcp 服务器与客户端
+
+Tcp 服务器与客户端的使用跟 Http 服务器与客户端是一样的。
+
+创建一个 Tcp 服务器：
+
+```javascript
+var server = new HproseTcpServer();
+```
+
+创建一个 Tcp 客户端：
+
+```javascript
+var client = new HproseTcpClient('tcp://127.0.0.1:4321');
+```

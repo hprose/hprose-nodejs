@@ -8,6 +8,7 @@
         - [Asynchronous Functions or Methods](#asynchronous-functions-or-methods)
     - **[Http Client](#http-client)**
         - [Exception Handling](#exception-handling)
+    - **[Tcp Server & Client](#tcp-server-client)**
 
 >---
 
@@ -133,3 +134,18 @@ proxy.hello("world", function(result) {
 });
 ```
 
+### Tcp Server & Client
+
+The Tcp Server & Client are used as same as the Http Server & Client.
+
+To create a Tcp Server:
+
+```javascript
+var server = new HproseTcpServer();
+```
+
+To create a Tcp Client:
+
+```javascript
+var client = new HproseTcpClient('tcp://127.0.0.1:4321');
+```
