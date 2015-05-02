@@ -1,5 +1,7 @@
 # Hprose for Node.js
 
+[![Join the chat at https://gitter.im/hprose/hprose-nodejs](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/hprose/hprose-nodejs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 >---
 - **[Introduction](#introduction)**
 - **[Usage](#usage)**
