@@ -1,8 +1,25 @@
 {
   "name": "hprose",
-  "version": "1.4.9",
+  "version": "1.5.0",
   "homepage": "https://github.com/hprose/hprose-nodejs",
   "description": "hprose for node.js",
+  "keywords": [
+    "hprose",
+    "serialize",
+    "serialization",
+    "rpc",
+    "webservice",
+    "protocol",
+    "web",
+    "service",
+    "framework",
+    "library",
+    "game",
+    "cross-platform",
+    "cross-language",
+    "communication",
+    "middleware"
+  ],
   "author": {
     "name" : "Ma Bingyao",
     "email" : "mabingyao@gmail.com",
@@ -12,7 +29,7 @@
     "lib": "lib/"
   },
   "main": "lib/hprose.js",
-  "dependencies": {},
+  "dependencies": { "ws": "*" },
   "devDependencies": {},
   "engines": {
     "node": "*"

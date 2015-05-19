@@ -1,7 +1,7 @@
 /*jshint node:true */
 "use strict";
 
-var hprose = require("hprose");
+var hprose = require('hprose');
 console.log(hprose.unserialize(hprose.serialize(0)));
 console.log(hprose.unserialize(hprose.serialize(1)));
 console.log(hprose.unserialize(hprose.serialize(9)));
@@ -50,7 +50,7 @@ console.log(hprose.unserialize(s));
 // Test HarmonyMaps
 var map = new Map();
 map.set(map, map);
-map.set(0, "+0");
+map.set(NaN, "NaN");
 map.set(-0, "-0");
 console.log(map.size);
 s = hprose.serialize(map);

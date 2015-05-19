@@ -35,7 +35,7 @@ function LogFilter() {
     };
 }
 
-var server = hprose.Server.create("tcp://0.0.0.0:4321");
+var server = hprose.Server.create("unix:/tmp/my.sock");
 server.debug = true;
 server.filter = new LogFilter();
 //server.simple = true;

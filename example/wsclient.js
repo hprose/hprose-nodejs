@@ -2,8 +2,8 @@
 'use strict';
 
 var hprose = require('../lib/hprose.js');
-var client = hprose.Client.create('http://127.0.0.1:8080/', []);
-
+var client = hprose.Client.create('ws://127.0.0.1:8080/wsapi', []);
+client.keepAlive = false;
 //client.simple = true;
 client.on('error', function(func, e) {
     console.log(func, e);

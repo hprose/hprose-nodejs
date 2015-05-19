@@ -2,7 +2,7 @@
 'use strict';
 
 var hprose = require('../lib/hprose.js');
-var client = hprose.Client.create('http://127.0.0.1:8080/', []);
+var client = hprose.Client.create('unix:/tmp/my.sock', []);
 
 //client.simple = true;
 client.on('error', function(func, e) {

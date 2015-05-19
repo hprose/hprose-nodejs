@@ -1,7 +1,7 @@
 /*jshint node:true, eqeqeq:true */
 'use strict';
 
-var hprose = require('hprose');
+var hprose = require('../lib/hprose.js');
 
 function hello(name) {
     return 'Hello ' + name + '!';
@@ -24,20 +24,26 @@ function getMaps() {
     return result;
 }
 
-function HproseFilter() {
-    this.inputFilter = function(value) { console.log(value.toString()); return value; };
-    this.outputFilter = function(value) { console.log(value.toString()); return value; };
+function LogFilter() {
+    this.inputFilter = function(value) {
+        console.log(hprose.BytesIO.toString(value));
+        return value;
+    };
+    this.outputFilter = function(value) {
+        console.log(hprose.BytesIO.toString(value));
+        return value;
+    };
 }
 
-var server = new hprose.server.HttpServer();
-server.setCrossDomainEnabled(true);
-server.setDebugEnabled(true);
-server.setFilter(new HproseFilter());
-//server.setSimpleMode(true);
+var server = hprose.Server.create("http://0.0.0.0:8080");
+server.crossDomain = true;
+server.crossDomainXmlFile = './crossdomain.xml';
+server.debug = true;
+server.filter = new LogFilter();
+//server.simple = true;
 server.addFunctions([hello, hello2, getMaps]);
 server.addAsyncFunction(asyncHello);
-server.setCrossDomainXmlFile('./crossdomain.xml');
 server.on('sendError', function(message) {
     console.log(message);
 });
-server.listen(8080);
+server.start();
