@@ -9,7 +9,9 @@
     - **[Http 客户端](#http-客户端)**
         - [异常处理](#异常处理)
     - **[Tcp 服务器与客户端](#tcp-服务器与客户端)**
-    
+    - **[Unix Socket 服务器与客户端](#unix-socket-服务器与客户端)**
+    - **[WebSocket 服务器与客户端](#websocket-服务器与客户端)**
+
 >---
 
 ## 简介
@@ -51,13 +53,13 @@
 Hprose for Node.js 使用很简单。你可用像这样创建 Hprose 服务器：
 
 ```javascript
-require("hprose");
+var hprose = require("hprose");
 function hello(name) {
     return "Hello " + name + "!";
 }
-var server = new HproseHttpServer();
+var server = hprose.Server.create("http://0.0.0.0:8080");
 server.addFunction(hello);
-server.listen(8080);
+server.start();
 ```
 
 启动使用下面的命令：
@@ -71,15 +73,15 @@ server.listen(8080);
 事实上，大多数 Node.js 服务是异步的，你可以像这样来发布异步函数或方法：
 
 ```javascript
-require("hprose");
+var hprose = require("hprose");
 function hello(name, callback) {
     setTimeout(function() {
         callback("Hello " + name + "!");
     }, 10);
 }
-var server = new HproseHttpServer();
+var server = hprose.Server.create("http://0.0.0.0:8080");
 server.addAsyncFunction(hello);
-server.listen(8080);
+server.start();
 ```
 
 ### Http 客户端
@@ -87,8 +89,8 @@ server.listen(8080);
 然后你可用创建 Hprose 客户端像这样来调用它：
 
 ```javascript
-require("hprose");
-var client = new HproseHttpClient('http://127.0.0.1:8080/');
+var hprose = require("hprose");
+var client = hprose.Client.create("http://127.0.0.1:8080/");
 var proxy = client.useService();
 proxy.hello("world", function(result) {
     console.log(result);
@@ -103,18 +105,23 @@ proxy.hello("world", function(result) {
 
     node --harmony-proxies client.js
 
-如果没有 --harmony-proxies 参数，你将无法使用如下代码调用远程服务：
+如果没有 --harmony-proxies 参数，你需要这样创建远程调用代理对象：
 
 ```javascript
+var hprose = require("hprose");
+var client = hprose.Client.create("http://127.0.0.1:8080/");
+var proxy = client.useService(["hello"]);
 proxy.hello("world", function(result) {
     console.log(result);
 });
 ```
 
-但是可以像这样来调用：
+或者像这样创建客户端：
 
 ```javascript
-client.invoke("hello", "world", function(result) {
+var hprose = require("hprose");
+var client = hprose.Client.create("http://127.0.0.1:8080/", ["hello"]);
+client.hello("world", function(result) {
     console.log(result);
 });
 ```
@@ -140,11 +147,42 @@ Tcp 服务器与客户端的使用跟 Http 服务器与客户端是一样的。
 创建一个 Tcp 服务器：
 
 ```javascript
-var server = new HproseTcpServer();
+var server = hprose.Server.create("tcp://0.0.0.0:4321");
 ```
 
 创建一个 Tcp 客户端：
 
 ```javascript
-var client = new HproseTcpClient('tcp://127.0.0.1:4321');
+var client = hprose.Client.create('tcp://127.0.0.1:4321');
+```
+### Unix Socket 服务器与客户端
+
+Unix Socket 服务器与客户端的使用跟 Http 服务器与客户端是一样的。
+
+创建一个 Unix Socket 服务器：
+
+```javascript
+var server = hprose.Server.create("unix:/tmp/my.sock");
+```
+
+创建一个 Unix Socket 客户端：
+
+```javascript
+var client = hprose.Client.create('unix:/tmp/my.sock');
+```
+
+### WebSocket 服务器与客户端
+
+WebSocket 服务器与客户端的使用跟 Http 服务器与客户端是一样的。
+
+创建一个 WebSocket 服务器：
+
+```javascript
+var server = hprose.Server.create("ws://0.0.0.0:8080/");
+```
+
+创建一个 WebSocket 客户端：
+
+```javascript
+var client = hprose.Client.create('ws://0.0.0.0:8080/');
 ```

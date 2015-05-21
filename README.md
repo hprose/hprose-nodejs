@@ -11,6 +11,8 @@
     - **[Http Client](#http-client)**
         - [Exception Handling](#exception-handling)
     - **[Tcp Server & Client](#tcp-server-client)**
+    - **[Unix Socket Server & Client](#unix-socket-server-client)**
+    - **[WebSocket Server & Client](#websocket-server-client)**
 
 >---
 
@@ -53,13 +55,13 @@ This project is the implementation of Hprose for Node.js.
 Hprose for Node.js is very easy to use. You can create a hprose server like this:
 
 ```javascript
-require("hprose");
+var hprose = require("hprose");
 function hello(name) {
     return "Hello " + name + "!";
 }
-var server = new HproseHttpServer();
+var server = hprose.Server.create("http://0.0.0.0:8080");
 server.addFunction(hello);
-server.listen(8080);
+server.start();
 ```
 
 To start it use:
@@ -74,15 +76,15 @@ This is not required option, but it is recommended to use it.
 In fact most nodejs service methods are asynchronous, you can publish asynchronous function like this:
 
 ```javascript
-require("hprose");
+var hprose = require("hprose");
 function hello(name, callback) {
     setTimeout(function() {
         callback("Hello " + name + "!");
     }, 10);
 }
-var server = new HproseHttpServer();
+var server = hprose.Server.create("http://0.0.0.0:8080");
 server.addAsyncFunction(hello);
-server.listen(8080);
+server.start();
 ```
 
 ### Http Client
@@ -90,8 +92,8 @@ server.listen(8080);
 Then you can create a hprose client to invoke it like this:
 
 ```javascript
-require("hprose");
-var client = new HproseHttpClient('http://127.0.0.1:8080/');
+var hprose = require("hprose");
+var client = hprose.Client.create("http://127.0.0.1:8080/");
 var proxy = client.useService();
 proxy.hello("world", function(result) {
     console.log(result);
@@ -106,18 +108,23 @@ or
 
     node --harmony-proxies client.js
 
-Without --harmony-proxies, you can't use the following code to invoke remote service:
+Without --harmony-proxies, you need create proxy like this:
 
 ```javascript
+var hprose = require("hprose");
+var client = hprose.Client.create("http://127.0.0.1:8080/");
+var proxy = client.useService(["hello"]);
 proxy.hello("world", function(result) {
     console.log(result);
 });
 ```
 
-But you can invoke it like this:
+Or create client like this:
 
 ```javascript
-client.invoke("hello", "world", function(result) {
+var hprose = require("hprose");
+var client = hprose.Client.create("http://127.0.0.1:8080/", ["hello"]);
+client.hello("world", function(result) {
     console.log(result);
 });
 ```
@@ -143,11 +150,43 @@ The Tcp Server & Client are used as same as the Http Server & Client.
 To create a Tcp Server:
 
 ```javascript
-var server = new HproseTcpServer();
+var server = hprose.Server.create("tcp://0.0.0.0:4321");
 ```
 
 To create a Tcp Client:
 
 ```javascript
-var client = new HproseTcpClient('tcp://127.0.0.1:4321');
+var client = hprose.Client.create('tcp://127.0.0.1:4321');
+```
+
+### Unix Socket Server & Client
+
+The Unix Socket Server & Client are used as same as the Http Server & Client.
+
+To create a Unix Socket Server:
+
+```javascript
+var server = hprose.Server.create("unix:/tmp/my.sock");
+```
+
+To create a Unix Socket Client:
+
+```javascript
+var client = hprose.Client.create('unix:/tmp/my.sock');
+```
+
+### WebSocket Server & Client
+
+The WebSocket Server & Client are used as same as the Http Server & Client.
+
+To create a WebSocket Server:
+
+```javascript
+var server = hprose.Server.create("ws://0.0.0.0:8080/");
+```
+
+To create a WebSocket Client:
+
+```javascript
+var client = hprose.Client.create('ws://0.0.0.0:8080/');
 ```
