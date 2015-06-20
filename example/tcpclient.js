@@ -3,7 +3,7 @@
 
 var hprose = require('../lib/hprose.js');
 var client = hprose.Client.create('tcp://127.0.0.1:4321/', []);
-
+client.fullDuplex = true;
 //client.simple = true;
 client.on('error', function(func, e) {
     console.log(func, e);
