@@ -1,6 +1,6 @@
 {
   "name": "hprose",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "homepage": "https://github.com/hprose/hprose-nodejs",
   "description": "hprose for node.js",
   "keywords": [
@@ -42,7 +42,7 @@
     "lib": "lib/"
   },
   "main": "lib/hprose.js",
-  "dependencies": { "ws": "*" },
+  "optionalDependencies": { "ws": "*" },
   "devDependencies": {},
   "engines": {
     "node": "*"
@@ -52,12 +52,8 @@
     "url": "https://github.com/hprose/hprose-nodejs.git"
   },
   "bugs": {
-    "url": "https://github.com/hprose/hprose-nodejs/issues"
+    "url": "https://github.com/hprose/hprose-nodejs/issues",
+    "email": "andot@hprose.com"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/hprose/hprose-nodejs/blob/master/LICENSE.md"
-    }
-  ]
+  "license" : "MIT"
 }
