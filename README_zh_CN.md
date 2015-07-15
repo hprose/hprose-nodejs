@@ -6,7 +6,7 @@
 [![npm version](https://img.shields.io/npm/v/hprose.svg)](https://www.npmjs.com/package/hprose)
 [![License](https://img.shields.io/npm/l/hprose.svg)](http://opensource.org/licenses/MIT)
 
-![Hprose](http://hprose.com/logo.png)
+<img align="right" height="260" src="http://hprose.com/logo.png" />
 
 >---
 - **[简介](#简介)**
