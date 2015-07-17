@@ -3,8 +3,8 @@
 
 var hprose = require('../lib/hprose.js');
 
-function hello(name) {
-    return 'Hello ' + name + '!';
+function hello(name, context) {
+    return 'Hello ' + name + '! -- ' + context.socket.remoteAddress;
 }
 
 function hello2(name) {
@@ -16,6 +16,7 @@ function asyncHello(name, callback) {
 }
 
 function getMaps() {
+    var context = Array.prototype.pop.call(arguments);
     var result = {};
     var key;
     for (key in arguments) {
@@ -40,7 +41,8 @@ server.crossDomain = true;
 server.crossDomainXmlFile = './crossdomain.xml';
 server.debug = true;
 server.filter = new LogFilter();
-//server.simple = true;
+server.simple = true;
+server.passContext = true;
 server.addFunctions([hello, hello2, getMaps]);
 server.addAsyncFunction(asyncHello);
 server.on('sendError', function(message) {
