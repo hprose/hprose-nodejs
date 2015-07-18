@@ -48,7 +48,7 @@ console.log(s.toString());
 console.log(hprose.unserialize(s));
 
 // Test HarmonyMaps
-var map = new Map();
+var map = new global.Map();
 map.set(map, map);
 map.set(NaN, "NaN");
 map.set(-0, "-0");
