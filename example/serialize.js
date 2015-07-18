@@ -1,7 +1,7 @@
 /*jshint node:true */
 "use strict";
 
-var hprose = require('hprose');
+var hprose = require('../lib/hprose.js');
 console.log(hprose.unserialize(hprose.serialize(0)));
 console.log(hprose.unserialize(hprose.serialize(1)));
 console.log(hprose.unserialize(hprose.serialize(9)));
