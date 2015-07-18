@@ -4,8 +4,8 @@
 var hprose = require('../lib/hprose.js');
 var client = hprose.Client.create('tcp://127.0.0.1:4321/', []);
 client.fullDuplex = true;
-client.maxPoolSize = 8;
-//client.simple = true;
+client.maxPoolSize = 1;
+client.simple = true;
 client.on('error', function(func, e) {
     console.log(func, e);
 });
