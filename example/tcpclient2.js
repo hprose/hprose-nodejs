@@ -5,11 +5,11 @@ var hprose = require('../lib/hprose.js');
 var client = hprose.Client.create('tcp://127.0.0.1:4321/', []);
 client.fullDuplex = true;
 client.maxPoolSize = 1;
-//client.simple = true;
+client.simple = true;
 client.on('error', function(func, e) {
     console.log(func, e);
 });
-var proxy = client.useService(['hello']);
+var proxy = client.useService(['hello', 'hello2', 'getMaps']);
 var start = new Date().getTime();
 var max = 100;
 var n = 0;
@@ -26,3 +26,13 @@ for (var i = 0; i < max; i++) {
 }
 var end = new Date().getTime();
 console.log(end - start);
+client.beginBatch();
+proxy.getMaps('name', 'age', 'age', function(result) {
+    console.log(result);
+});
+proxy.getMaps('name', 'age', 'birthday', function(result) {
+    console.log(hprose.BytesIO.toString(result));
+    console.log(hprose.unserialize(result));
+    console.log(hprose.serialize(hprose.unserialize(result)).toString());
+}, hprose.Serialized);
+client.endBatch();
