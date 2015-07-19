@@ -36,7 +36,7 @@ function LogFilter() {
     };
 }
 
-var server = hprose.Server.create("ws://0.0.0.0:8080/wsapi");
+var server = hprose.Server.create("ws://0.0.0.0:8080");
 server.debug = true;
 server.filter = new LogFilter();
 server.simple = true;
