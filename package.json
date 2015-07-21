@@ -1,6 +1,6 @@
 {
   "name": "hprose",
-  "version": "1.6.4",
+  "version": "2.0.0",
   "homepage": "https://github.com/hprose/hprose-nodejs",
   "description": "hprose for node.js",
   "keywords": [
@@ -27,11 +27,18 @@
     "communication",
     "middleware",
     "webapi",
-    "socket",
-    "tcp",
     "async",
-    "unix",
-    "future"
+    "batch",
+    "multicall",
+    "future",
+    "promise",
+    "comet",
+    "push",
+    "pub-sub",
+    "publish",
+    "subscribe",
+    "idempotent",
+    "oneway"
   ],
   "author": {
     "name" : "Ma Bingyao",
