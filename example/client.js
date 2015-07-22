@@ -34,3 +34,23 @@ proxy.getMaps('name', 'age', 'birthday', function(result) {
     console.log(hprose.serialize(hprose.unserialize(result)).toString());
 }, hprose.Serialized);
 client.endBatch();
+proxy.hello("world", function(){
+  throw "Hello Error - 1!";
+},function(name, err){
+  console.error("Error:", err);
+});
+proxy.hello("world", function(){
+  throw "Hello Error - 2!";
+}).catchError(function(err){
+  console.error("Error:", err);
+});
+proxy.hello("world").then(function(){
+  throw "Hello Error - 3!";
+}).catchError(function(err){
+  console.error("Error:", err);
+});
+proxy.hello("world").then(function(){
+  throw "Hello Error - 4!";
+},function(err){
+  console.error("Error:", err); // must not run
+});
