@@ -4,7 +4,9 @@
 var hprose = require('../lib/hprose.js');
 
 function hello(name, context) {
-    return 'Hello ' + name + '! -- ' + context.socket.remoteAddress;
+    context.clients.push("news", "this is a pushed message: " + name);
+    context.clients.broadcast("news", {x: 1, y: 2, message: "this is a pushed object:"  + name});
+    return 'Hello ' + name + '!';
 }
 
 function hello2(name) {
@@ -43,6 +45,7 @@ server.simple = true;
 server.passContext = true;
 server.addFunctions([hello, hello2, getMaps]);
 server.addAsyncFunction(asyncHello);
+server.publish('news');
 server.on('sendError', function(message) {
     console.log(message);
 });

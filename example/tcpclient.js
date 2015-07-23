@@ -4,7 +4,7 @@
 var hprose = require('../lib/hprose.js');
 var client = hprose.Client.create('tcp://127.0.0.1:4321/', []);
 client.fullDuplex = false;
-client.maxPoolSize = 1;
+client.maxPoolSize = 2;
 client.simple = true;
 client.on('error', function(func, e) {
     console.log(func, e);
@@ -13,6 +13,9 @@ var proxy = client.useService(['hello', 'hello2', 'getMaps']);
 var start = new Date().getTime();
 var max = 100;
 var n = 0;
+client.subscribe('news', function(result) {
+    console.log(result);
+});
 var callback = function(result) {
     console.log(result);
     n++;

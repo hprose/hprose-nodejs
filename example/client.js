@@ -11,6 +11,9 @@ var proxy = client.useService(['hello', 'hello2', 'getMaps']);
 var start = new Date().getTime();
 var max = 100;
 var n = 0;
+client.subscribe('news', function(result) {
+    console.log(result);
+});
 var callback = function(result) {
     console.log(result);
     n++;
