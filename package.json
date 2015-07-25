@@ -38,7 +38,8 @@
     "publish",
     "subscribe",
     "idempotent",
-    "oneway"
+    "oneway",
+    "promises-aplus"
   ],
   "author": {
     "name" : "Ma Bingyao",

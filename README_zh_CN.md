@@ -1,5 +1,8 @@
 # Hprose for Node.js
-
+<a href="https://promisesaplus.com/">
+    <img src="https://promisesaplus.com/assets/logo-small.png" alt="Promises/A+ logo"
+         title="Promises/A+ 1.1 compliant" align="right" />
+</a>
 [![Join the chat at https://gitter.im/hprose/hprose-nodejs](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/hprose/hprose-nodejs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![npm download](https://img.shields.io/npm/dm/hprose.svg)](https://www.npmjs.com/package/hprose)
 [![optionalDependency Status](https://david-dm.org/hprose/hprose-nodejs/optional-status.svg)](https://david-dm.org/hprose/hprose-nodejs#info=optionalDependencies)
