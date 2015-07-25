@@ -2,7 +2,9 @@
 'use strict';
 
 var hprose = require('../lib/hprose.js');
-var client = hprose.Client.create('tcp://127.0.0.1:4321/', []);
+var client = hprose.Client.create(['tcp://127.0.0.1:4321/',
+                                   'tcp://127.0.0.1:1234/',
+                                   'tcp://127.0.0.1:1111/'], []);
 client.fullDuplex = true;
 client.maxPoolSize = 1;
 client.simple = true;
