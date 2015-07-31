@@ -19,7 +19,7 @@ onlineChecker.on('unsubscribe', function(id, clients) {
 });
 
 Chat.prototype.getAllUsers = function(context) {
-    context.clients.push('updateUsers', context.clients.idlist('message'));
+    return context.clients.idlist('message');
 };
 
 Chat.prototype.sendMessage = function(from, to, message, context) {
