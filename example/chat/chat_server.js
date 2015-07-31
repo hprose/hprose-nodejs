@@ -46,7 +46,9 @@ var server = hprose.Server.create("ws://0.0.0.0:8080");
 server.debug = true;
 server.passContext = true;
 //server.filter = new LogFilter();
-server.add(new Chat());
+var chat = new Chat();
+server.add('getAllUsers', chat);
+server.addMethods(['sendMessage', 'broadcast'], chat, { oneway: true });
 server.publish('message', onlineChecker);
 server.publish('updateUsers');
 // server.on('sendError', function(e) {
