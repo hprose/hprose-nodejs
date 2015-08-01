@@ -31,23 +31,23 @@ Chat.prototype.broadcast = function(from, message, context) {
     context.clients.push('message', from + ' said: ' + message);
 };
 
-// function LogFilter() {
-//     this.inputFilter = function(value) {
-//         console.log(hprose.BytesIO.toString(value));
-//         return value;
-//     };
-//     this.outputFilter = function(value) {
-//         console.log(hprose.BytesIO.toString(value));
-//         return value;
-//     };
-// }
+function LogFilter() {
+    this.inputFilter = function(value) {
+        console.log(hprose.BytesIO.toString(value));
+        return value;
+    };
+    this.outputFilter = function(value) {
+        console.log(hprose.BytesIO.toString(value));
+        return value;
+    };
+}
 
 var server = hprose.Server.create("ws://0.0.0.0:8080");
 server.debug = true;
 server.passContext = true;
-//server.filter = new LogFilter();
+server.filter = new LogFilter();
 var chat = new Chat();
-server.add('getAllUsers', chat);
+server.addMethod('getAllUsers', chat);
 server.addMethods(['sendMessage', 'broadcast'], chat, { oneway: true });
 server.publish('message', onlineChecker);
 server.publish('updateUsers');
