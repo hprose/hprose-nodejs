@@ -49,7 +49,7 @@ server.passContext = true;
 var chat = new Chat();
 server.addMethod('getAllUsers', chat);
 server.addMethods(['sendMessage', 'broadcast'], chat, { oneway: true });
-server.publish('message', onlineChecker);
+server.publish('message', { events: onlineChecker });
 server.publish('updateUsers');
 // server.on('sendError', function(e) {
 //     console.log(e.stack);
