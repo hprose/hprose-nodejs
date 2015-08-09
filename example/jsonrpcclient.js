@@ -20,7 +20,7 @@ var callback = function(result) {
         console.log(end - start);
     }
 };
-client.beginBatch();
+client.batch.begin();
 for (var i = 0; i < max; i++) {
     proxy.hello(i, callback);
 }
@@ -29,9 +29,9 @@ console.log(end - start);
 proxy.getMaps('name', 'age', 'age', function(result) {
     console.log(result);
 });
-client.endBatch();
 proxy.getMaps('name', 'age', 'birthday', function(result) {
     console.log(hprose.BytesIO.toString(result));
     console.log(hprose.unserialize(result));
     console.log(hprose.serialize(hprose.unserialize(result)).toString());
 }, hprose.Serialized);
+client.batch.end();

@@ -31,7 +31,7 @@ for (var i = 0; i < max; i++) {
 }
 var end = new Date().getTime();
 console.log(end - start);
-client.beginBatch();
+client.batch.begin();
 proxy.getMaps('name', 'age', 'age', function(result) {
     console.log(result);
 });
@@ -40,4 +40,4 @@ proxy.getMaps('name', 'age', 'birthday', function(result) {
     console.log(hprose.unserialize(result));
     console.log(hprose.serialize(hprose.unserialize(result)).toString());
 }, hprose.Serialized);
-client.endBatch();
+client.batch.end();

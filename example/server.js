@@ -43,12 +43,12 @@ server.crossDomain = true;
 server.crossDomainXmlFile = './crossdomain.xml';
 server.debug = true;
 server.filter = new LogFilter();
-server.simple = true;
+//server.simple = true;
 server.passContext = true;
 server.addFunctions([hello, hello2, getMaps]);
 server.addAsyncFunction(asyncHello);
 server.publish('news');
 server.on('sendError', function(message) {
-    console.log(message);
+    console.log(message.stack);
 });
 server.start();

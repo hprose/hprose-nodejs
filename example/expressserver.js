@@ -2,6 +2,8 @@
 'use strict';
 
 var hprose = require('../lib/hprose.js');
+var express = require('express');
+var session = require('cookie-session');
 
 function hello(name, context) {
     context.clients.push("news", "this is a pushed message: " + name);
@@ -38,7 +40,9 @@ function LogFilter() {
     };
 }
 
-var server = hprose.Server.create("ws://0.0.0.0:8080");
+var server = new hprose.HttpService();
+server.crossDomain = true;
+server.crossDomainXmlFile = './crossdomain.xml';
 server.debug = true;
 server.filter = new LogFilter();
 server.simple = true;
@@ -49,4 +53,11 @@ server.publish('news');
 server.on('sendError', function(message) {
     console.log(message);
 });
-server.listen(8080, '0.0.0.0');
+
+var app = express()
+   .use(session({
+       name: 'session',
+       keys: ['key1', 'key2']
+   }))
+   .use(server.handle)
+   .listen(8080);
