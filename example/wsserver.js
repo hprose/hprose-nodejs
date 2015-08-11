@@ -49,4 +49,7 @@ server.publish('news');
 server.on('sendError', function(message) {
     console.log(message);
 });
-server.listen(8080, '0.0.0.0');
+process.on('SIGINT', function() {
+  server.stop();
+});
+server.start();

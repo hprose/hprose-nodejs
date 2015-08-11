@@ -51,4 +51,7 @@ server.publish('news');
 server.on('sendError', function(message) {
     console.log(message.stack);
 });
+process.on('SIGINT', function() {
+  server.stop();
+});
 server.start();

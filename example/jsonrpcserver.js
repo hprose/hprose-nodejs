@@ -49,4 +49,7 @@ server.addAsyncFunction(asyncHello);
 server.on('sendError', function(message) {
     console.error(message.stack);
 });
+process.on('SIGINT', function() {
+  server.stop();
+});
 server.start();

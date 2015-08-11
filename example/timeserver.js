@@ -7,4 +7,7 @@ server.publish('time');
 setInterval(function() {
     server.push('time', new Date());
 }, 1000);
+process.on('SIGINT', function() {
+  server.stop();
+});
 server.start();

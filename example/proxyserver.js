@@ -8,4 +8,7 @@ function proxy(name, args) {
 }
 var server = hprose.Server.create("tcp://0.0.0.0:1234");
 server.addMissingFunction(proxy, { mode: hprose.RawWithEndTag });
+process.on('SIGINT', function() {
+  server.stop();
+});
 server.start();

@@ -36,4 +36,7 @@ server.filter = new LogFilter();
 server.on('sendError', function(e) {
     console.log(e.stack);
 });
+process.on('SIGINT', function() {
+  server.stop();
+});
 server.start();
