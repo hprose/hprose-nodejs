@@ -2,6 +2,9 @@
     <img src="https://promisesaplus.com/assets/logo-small.png" alt="Promises/A+ logo"
          title="Promises/A+ 1.1 compliant" align="right" />
 </a>
+<a href="http://hprose.com/">
+<img align="right" src="http://hprose.com/favicon-96x96.png" />
+</a>
 # Hprose for Node.js
 
 [![Join the chat at https://gitter.im/hprose/hprose-nodejs](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/hprose/hprose-nodejs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -11,7 +14,6 @@
 [![License](https://img.shields.io/npm/l/hprose.svg)](http://opensource.org/licenses/MIT)
 
 >---
-<img align="right" height="260" src="http://hprose.com/logo.png" />
 - **[简介](#简介)**
 - **[使用](#使用)**
     - **[Http 服务器](#http-服务器)**
@@ -197,3 +199,5 @@ var server = hprose.Server.create("ws://0.0.0.0:8080/");
 ```javascript
 var client = hprose.Client.create('ws://0.0.0.0:8080/');
 ```
+
+更多详细文档请参见：[Hprose for Node.js 用户手册](https://github.com/hprose/hprose-nodejs/wiki)
