@@ -1,6 +1,6 @@
 {
   "name": "hprose",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "homepage": "https://github.com/hprose/hprose-nodejs",
   "description": "hprose for node.js",
   "keywords": [
@@ -52,7 +52,7 @@
   "main": "lib/hprose.js",
   "optionalDependencies": { "ws": "*" },
   "devDependencies": {
-      "promises-plus-tests": "*"
+      "promises-aplus-tests": "*"
   },
   "scripts": {
     "aplus-tests": "promises-aplus-tests lib/hprose"
