@@ -10,7 +10,7 @@ function hello(name, context) {
 }
 
 function hello2(name) {
-    return 'Hello ' + name + '!';
+    return name;
 }
 
 function asyncHello(name, callback) {
@@ -29,11 +29,21 @@ function getMaps() {
 
 function LogFilter() {
     this.inputFilter = function(value) {
-        console.log(hprose.BytesIO.toString(value));
+        try {
+            console.log(hprose.BytesIO.toString(value));
+        }
+        catch(e) {
+            console.log(hprose.toBinaryString(value));
+        }
         return value;
     };
     this.outputFilter = function(value) {
-        console.log(hprose.BytesIO.toString(value));
+        try {
+            console.log(hprose.BytesIO.toString(value));
+        }
+        catch(e) {
+            console.log(hprose.toBinaryString(value));
+        }
         return value;
     };
 }
