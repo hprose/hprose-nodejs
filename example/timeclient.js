@@ -2,7 +2,7 @@
 'use strict';
 
 var hprose = require('hprose');
-var client = hprose.Client.create("http://0.0.0.0:8080");
+var client = hprose.Client.create("http://127.0.0.1:8080");
 var count = 0;
 client.subscribe('time', function(date) {
     if (++count > 10) {
