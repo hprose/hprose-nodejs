@@ -7,9 +7,9 @@ function echo(value) {
 }
 var server = hprose.Server.create("http://0.0.0.0:8080");
 server.beforeFilter.use(stathandler('BeforeFilter'))
-                   .use(sizehandler('Non compressed'));
+                   .use(sizehandler('compressed'));
 server.addFilter(new CompressFilter('Lzp3'));
 server.afterFilter.use(stathandler('AfterFilter'))
-                  .use(sizehandler('compressed'));
+                  .use(sizehandler('Non compressed'));
 server.add(echo);
 server.start();
