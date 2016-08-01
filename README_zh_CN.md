@@ -57,6 +57,8 @@
 
 本项目是 Hprose 的 Node.js 语言版本实现。
 
+更多 Hprose 2.0 for Node.js 文档: https://github.com/hprose/hprose-nodejs/wiki 
+
 ## 使用
 
 ### Http 服务器

@@ -57,6 +57,8 @@ Through *Hprose*, You can conveniently and efficiently intercommunicate between 
 
 This project is the implementation of Hprose for Node.js.
 
+Hprose 2.0 for Node.js Documents（中文版）: https://github.com/hprose/hprose-nodejs/wiki 
+
 ## Usage
 
 ### Http Server
