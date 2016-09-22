@@ -11,7 +11,7 @@ function sum(a, b) {
     return promise;
 }
 
-var server = hprose.Server.create("ws://0.0.0.0:4321");
+var server = hprose.Server.create("tcp://0.0.0.0:4321");
 server.addFunction(sum);
 process.on('SIGINT', function() {
   server.stop();

@@ -2,7 +2,7 @@
 'use strict';
 
 var hprose = require('../lib/hprose.js');
-var client = hprose.Client.create('ws://127.0.0.1:4321/', ['sum']);
+var client = hprose.Client.create('tcp://127.0.0.1:4321/', ['sum']);
 // client.fullDuplex = false;
 client.keepAlive = false;
 client.timeout = 600;
