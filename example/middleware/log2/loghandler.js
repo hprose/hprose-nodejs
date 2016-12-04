@@ -1,9 +1,7 @@
 var hprose = require('hprose');
-module.exports = function(request, context, next) {
+module.exports = function*(request, context, next) {
     console.log(hprose.BytesIO.toString(request));
-    var response = next(request, context);
-    response.then(function(data) {
-        console.log(hprose.BytesIO.toString(data));
-    });
+    var response = yield next(request, context);
+    console.log(hprose.BytesIO.toString(response));
     return response;
 };

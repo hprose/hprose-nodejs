@@ -1,8 +1,6 @@
-module.exports = function(batches, context, next) {
+module.exports = function*(batches, context, next) {
     console.log("before invoke:", batches);
-    var result = next(batches, context);
-    result.then(function(result) {
-        console.log("after invoke:", batches, result);
-    });
+    var result = yield next(batches, context);
+    console.log("after invoke:", batches, result);
     return result;
 };
