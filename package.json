@@ -58,7 +58,7 @@
     "aplus-tests": "promises-aplus-tests lib/hprose"
   },
   "engines": {
-    "node": "*"
+    "node": ">=6"
   },
   "repository": {
     "type": "git",
