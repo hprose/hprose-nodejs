@@ -50,7 +50,7 @@
     "lib": "lib/"
   },
   "main": "lib/hprose.js",
-  "optionalDependencies": { "ws": "~3.0.0" },
+  "optionalDependencies": { "ws": ">=3.1.0" },
   "devDependencies": {
       "promises-aplus-tests": "*"
   },
