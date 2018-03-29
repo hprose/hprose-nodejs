@@ -27,6 +27,11 @@ for (var i = 0; i < max; i++) {
 }
 var end = new Date().getTime();
 console.log(end - start);
+
+(async function() {
+    console.log(await proxy.hello2("async world"));
+})();
+
 client.batch.begin();
 proxy.getMaps('name', 'age', 'age', function(result) {
     console.log(result);

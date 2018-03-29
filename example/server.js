@@ -9,8 +9,8 @@ function hello(name, context) {
     return 'Hello ' + name + '! -- ' + context.socket.remoteAddress;
 }
 
-function hello2(name) {
-    return 'Hello ' + name + '!';
+async function hello2(name) {
+    return await 'Hello ' + name + '!';
 }
 
 function asyncHello(name, callback) {
